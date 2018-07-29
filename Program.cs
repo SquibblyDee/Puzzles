@@ -118,6 +118,7 @@ namespace Puzzles
 
         static void Main(string[] args)
         {
+            ////CALL ALL OF OUR FUNCTIONS HERE
             RandomArray();
             CoinFlip();
             Console.WriteLine(FlipMultipleCoins(100));
