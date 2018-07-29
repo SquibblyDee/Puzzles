@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Puzzles
 {
@@ -76,9 +77,13 @@ namespace Puzzles
 
         static string[] Names()
         {
+            ////Declare all our needed vars
             string[] arr = {"Todd", "Tiffany", "Charlie", "Geneva", "Sydney"};
             string temp = "";
+            int count = 0;
+            List<string> longNames = new List<string>();
             Random rand = new Random();
+            ////Iterate through the array and reorg the indexes randomly
             for(int i=0; i<arr.Length; i++)
             {
                 int index = rand.Next(0,6);
@@ -86,13 +91,29 @@ namespace Puzzles
                 arr[i] = arr[index];
                 arr[index] = temp;
             }
+            ////Print our reorganized array
             Console.Write("[");
             foreach(string value in arr)
             {
                 Console.Write(value+",");
             }
             Console.Write("]");
-            return arr;
+            for(int j=0; j<arr.Length; j++)
+            {
+                if(arr[j].Length>5)
+                {
+                    longNames.Add(arr[j]);
+                }
+            }
+            ///Create our return array now that we have the count of names > 5 chars
+            string[] returnArray = new string[longNames.Count];
+            ////Push each name in the list into our new array and return it
+            foreach(string name in longNames)
+            {
+                returnArray[count] = name;
+                count++;
+            }
+            return returnArray;
         }
 
         static void Main(string[] args)
